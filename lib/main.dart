@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite_crud/screens/login.dart';
 import 'package:sqflite_crud/screens/signup.dart';
 import 'package:sqflite_crud/util/db_helper.dart';
 
 void main() {
-  runApp(const MaterialApp(home: SignUp(),));
+  runApp(const MaterialApp(home: Login(),));
 }
 
 class MyApp extends StatelessWidget {

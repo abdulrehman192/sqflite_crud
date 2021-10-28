@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
-import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -55,8 +53,18 @@ class DBHelper
       {
         Database database = await instance.db;
         int id = await database.insert(table, row);
-        print('id : $id');
         return id;
       }
   }
+
+  Future<bool> authenticateUser({required email, required password}) async
+  {
+    Database database = await instance.db;
+    var res = await database.rawQuery("Select * From Users Where email = '$email' and password = '$password' ");
+    if(res.length > 0)
+      return true;
+    else
+      return false;
+  }
+
 }
